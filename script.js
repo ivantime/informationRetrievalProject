@@ -1,18 +1,115 @@
-var countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central Arfrican Republic", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cuba", "Curacao", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauro", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
+var data = [
+    [
+        "https://en.wikipedia.org/wiki/Tell_Me_Why_(video_game)",
+        "Tell Me Why (video game) - Wikipedia",
+        "26 Jun 2022",
+        "In this intimate mystery, reunited twins Tyler and Alyson Ronan use their supernatural bond to unravel the memories of their loving but troubled childhood..."
+    ],
+    [
+        "https://genius.com/Backstreet-boys-i-want-it-that-way-lyrics",
+        "Backstreet Boys – I Want It That Way Lyrics - Genius",
+        "12 Apr 1999",
+        " Want It That Way Lyrics ; All] Tell me why ; Ain't nothing but a heartache. Tell me why ; a ; Tell me why. I never wanna hear you say. I want it that way [Verse 2 ..."
+    ],
+
+    [
+        "https://www.youtube.com/watch?v=8r39uFM12iU",
+        "Sound Of Legend - Tell Me Why (Official Video) - YouTube",
+        "9 Feb 2019",
+        "Download And Stream : https://soundoflegend.lnk.to/TellMeWhyFollow Sound Of Legend:http://facebook.com..."
+    ],
+    [
+        "https://subslikescript.com/I-want-it-that-way-brooklyn-99",
+        "Brooklyn Nine-Nine (2013–…): Season 5, Episode 17 - Tell Me Why",
+        "17 Feb 2021",
+        "Do you remember what he was singing? I think it was that song, \"I Want It That Way.\" Backstreet Boys. I'm familiar. Okay."
+
+    ],
+    [
+        "https://www.tellmewhygame.com",
+        "What is the story behind Tell Me Why?",
+        "8 Jan 2021",
+        "What is the story of Tell Me Why? Tell Me Why is the story of two twins, Alyson and Tyler Ronan, who reunite for the first time in ten years after their mother's death. Upon returning to their childhood home in rural Alaska, the Ronans realize that their shared past may not be as they remember it.",
+    ],
+    [
+        "https://www.vitalmtb.com/cables",
+        "Tell me why headset cable routing is a good idea - Vital MTB",
+        "1 Jun 2022",
+        "You get less cable rub and can get hoses out of the way more easily when running a handlebar bag for bikepacking. You won't have cables ..."
+    ],
+    [
+        "https://books.google.com.sg/tell-me-why",
+        "Tell Me Why - Page 213 - Google Books result",
+        "2 Jan 2018",
+        "A thin, fragile pole extended from the roof and was hooked on to the overhead power cable where it swayed and bucked, and smelled of scorched ozone."
+    ],
+    [
+        "https://www.defendingbigd.com › why-mr-robot-is-a-masterpiece",
+        "Me Says: Mr. Robot Is A Television Masterpiece That Deserves No Why...",
+        "1 Apr 2020",
+        "When you watch Mr. Robot, it's incredibly clear that Esmail is a true student of film and television. The show is absolutely overflowing with ..."
+    ]
+
+]
+
+function findSearch(input, arr) {
+    if (!input) { return false; }
+    else {
+        div_element=""
+        for (var i = 0; i < arr.length; i++){
+            if (arr[i][1] === input)
+            {
+                div_element+= "<div class=\"col\"> "+
+                "<div id=\"urlText\"><i><u>"+ arr[i][0].toString()+"</u></i></div>"+"<div> <div class=\"col\">"+
+                "<div id=\"headerResultText\">"+arr[i][1].toString()+"</div> </div>"+ "<div class=\"col\" id=\"dateResultText\">"+
+                "<div>"+ arr[i][2].toString()+"</div> </div> <div id=\"bodyResultText\" class=\"col\">"+ "<div>"+
+                arr[i][3].toString()+"</div> </div> </div> <div></br></br></div>";
+                return  div_element;
+            }
+        }
+        /*for each item in the array...*/
+        var input = input.split(" ");
+
+        for (var i = 0; i < arr.length; i++) {
+            // console.log(arr[i][1])
+            var pass = false;
+            input.some(function (element, idx) {
+
+                if (pass) { pass = false; return true };
+                if (element === "" || element === " ") {
+
+                }
+                else {
+                    const indexes = [...arr[i][1].matchAll(new RegExp(element, 'gi'))].map(a => a.index);
+                    // console.log(indexes); // [2, 25, 27, 33]
+
+                    /*create a DIV element for each matching element:*/
+                    if (indexes.length > 0) {
+                        div_element+= "<div class=\"col\"> "+
+                        "<div id=\"urlText\"><i><u>"+ arr[i][0].toString()+"</u></i></div>"+"<div> <div class=\"col\">"+
+                        "<div id=\"headerResultText\">"+arr[i][1].toString()+"</div> </div>"+ "<div class=\"col\" id=\"dateResultText\">"+
+                        "<div>"+ arr[i][2].toString()+"</div> </div> <div id=\"bodyResultText\" class=\"col\">"+ "<div>"+
+                        arr[i][3].toString()+"</div> </div> </div> <div></br></br></div>";
+                        pass = true;
+
+                    }
+                }
+            })
+        }
+        return div_element;
+    }
+}
 
 
 //Code Source:https://www.w3schools.com/howto/howto_js_autocomplete.asp
-
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     var currentFocus;
     /*execute a function when someone writes in the text field:*/
     inp.addEventListener("input", function (e) {
-        var a, b, i, val = this.value;
-        /*close any already open lists of autocompleted values*/
         closeAllLists();
-        if (!val) { return false; }
+        if (!this.value) { return false; }
         currentFocus = -1;
         /*create a DIV element that will contain the items (values):*/
         a = document.createElement("DIV");
@@ -21,28 +118,48 @@ function autocomplete(inp, arr) {
         /*append the DIV element as a child of the autocomplete container:*/
         this.parentNode.appendChild(a);
         /*for each item in the array...*/
-        for (i = 0; i < arr.length; i++) {
-            /*check if the item starts with the same letters as the text field value:*/
-            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                /*create a DIV element for each matching element:*/
-                b = document.createElement("DIV");
-                /*make the matching letters bold:*/
-                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                b.innerHTML += arr[i].substr(val.length);
-                /*insert a input field that will hold the current array item's value:*/
-                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                /*execute a function when someone clicks on the item value (DIV element):*/
-                b.addEventListener("click", function (e) {
-                    /*insert the value for the autocomplete text field:*/
-                    inp.value = this.getElementsByTagName("input")[0].value;
-                    /*close the list of autocompleted values,
-                    (or any other open lists of autocompleted values:*/
-                    closeAllLists();
-                });
-                a.appendChild(b);
-            }
+        var query = this.value.split(" ");
+
+        for (var i = 0; i < arr.length; i++) {
+            // console.log(arr[i][1])
+            var pass = false;
+            query.some(function (element, idx) {
+
+                if (pass) { pass = false; return true };
+                if (element === "" || element === " ") {
+
+                }
+                else {
+                    const indexes = [...arr[i][1].matchAll(new RegExp(element, 'gi'))].map(a => a.index);
+                    // console.log(indexes); // [2, 25, 27, 33]
+
+                    /*create a DIV element for each matching element:*/
+                    if (indexes.length > 0) {
+                        b = document.createElement("DIV");
+                        /*make the matching letters bold:*/
+                        // b.innerHTML = "<strong>" + arr[i][1].substr(indexes[idx], element.length) + "</strong>";
+                        b.innerHTML = arr[i][1];
+
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i][1] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            /*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                        pass = true;
+
+                    }
+                }
+            })
         }
+
     });
+
     /*execute a function presses a key on the keyboard:*/
     inp.addEventListener("keydown", function (e) {
         var x = document.getElementById(this.id + "autocomplete-list");

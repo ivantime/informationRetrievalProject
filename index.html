@@ -22,11 +22,22 @@
         <!--Make sure the form has the autocomplete function switched off:-->
         <form autocomplete="off" action="/action_page.php">
             <div class="autocomplete col-xs-10">
-                <input id="searchBoxInput" type="text" name="searchBox" placeholder="Tell me why...">
+                <input id="searchBoxInput" type="text" name="searchBox" placeholder="Search by Result Title Only...">
             </div>
-            <input type="submit" value="Search" class="col-xs-1">
+
+            <input type="submit" value="Search" class="searchBtn col-xs-1">
             <script>
-                autocomplete(document.getElementById("searchBoxInput"), countries);
+                autocomplete(document.getElementById("searchBoxInput"), data);
+                jQuery('input.searchBtn').click(function (event) {
+                    event.preventDefault();
+                    document.getElementById('startHere').innerHTML = ""
+
+                    var inputQuery = document.getElementById('searchBoxInput').value
+
+                    var stringHTML = findSearch(inputQuery, data)
+                    var newRow = jQuery(stringHTML);
+                    jQuery('div#startHere').append(newRow);
+                });
             </script>
         </form>
     </div>
@@ -41,8 +52,8 @@
             </br>
         </div>
         <div class="row">
-            <div class="col-sm-8">
-                <div class="col">
+            <div class="col-sm-8" id="startHere">
+                <!-- <div class="col">
                     <div id="urlText"><i><u>https://www.stackoverflow.com/some-url-text.html</u></i></div>
                 </div>
                 <div class="col">
@@ -57,9 +68,7 @@
                     <div>Lorem ipsum dolor..Lorem ipsum dolor..Lorem ipsum dolor..Lorem ipsum dolorLorem ipsum
                         dolorLorem ipsum dolorLorem ipsum dolorLorem ipsum dolor..Lorem ipsum dolor..
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
+                </div> -->
             </div>
         </div>
     </div>
