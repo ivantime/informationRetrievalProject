@@ -8,5 +8,10 @@ Note:
 Currently working on:
 -None
 
+
+View GitPage Search Function: https://ivantime.github.io/informationRetrievalProject/
+
+
+
 script.js Code adapted from Source:
 https://www.w3schools.com/howto/howto_js_autocomplete.asp
