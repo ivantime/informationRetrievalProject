@@ -1,7 +1,7 @@
 var data = [
     [
         "https://en.wikipedia.org/wiki/Tell_Me_Why_(video_game)",
-        "Tell Me Why (video game) - Wikipedia",
+        "Tell Me Why Video Game - Wikipedia",
         "26 Jun 2022",
         "In this intimate mystery, reunited twins Tyler and Alyson Ronan use their supernatural bond to unravel the memories of their loving but troubled childhood..."
     ],
@@ -55,16 +55,17 @@ var data = [
 function findSearch(input, arr) {
     if (!input) { return false; }
     else {
-        div_element=""
-        for (var i = 0; i < arr.length; i++){
-            if (arr[i][1] === input)
-            {
-                div_element+= "<div class=\"col\"> "+
-                "<div id=\"urlText\"><i><u>"+ arr[i][0].toString()+"</u></i></div>"+"<div> <div class=\"col\">"+
-                "<div id=\"headerResultText\">"+arr[i][1].toString()+"</div> </div>"+ "<div class=\"col\" id=\"dateResultText\">"+
-                "<div>"+ arr[i][2].toString()+"</div> </div> <div id=\"bodyResultText\" class=\"col\">"+ "<div>"+
-                arr[i][3].toString()+"</div> </div> </div> <div></br></br></div>";
-                return  div_element;
+        var div_element = ""
+        var count = 0;
+        var idxPresent = []
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i][1] === input) {
+                div_element += "<div class=\"col\"> " +
+                    "<div id=\"urlText\"><i><u>" + arr[i][0].toString() + "</u></i></div>" + "<div> <div class=\"col\">" +
+                    "<div id=\"headerResultText\">" + arr[i][1].toString() + "</div> </div>" + "<div class=\"col\" id=\"dateResultText\">" +
+                    "<div>" + arr[i][2].toString() + "</div> </div> <div id=\"bodyResultText\" class=\"col\">" + "<div>" +
+                    arr[i][3].toString() + "</div> </div> </div> <div></br></br></div>";
+                idxPresent.push(i)
             }
         }
         /*for each item in the array...*/
@@ -80,23 +81,27 @@ function findSearch(input, arr) {
 
                 }
                 else {
-                    const indexes = [...arr[i][1].matchAll(new RegExp(element, 'gi'))].map(a => a.index);
-                    // console.log(indexes); // [2, 25, 27, 33]
+                    console.log(idxPresent.includes(i))
+                    if (idxPresent.includes(i) === false) {
+                        const indexes = [...arr[i][1].matchAll(new RegExp(element, 'gi'))].map(a => a.index);
+                        // console.log(indexes); // [2, 25, 27, 33]
 
-                    /*create a DIV element for each matching element:*/
-                    if (indexes.length > 0) {
-                        div_element+= "<div class=\"col\"> "+
-                        "<div id=\"urlText\"><i><u>"+ arr[i][0].toString()+"</u></i></div>"+"<div> <div class=\"col\">"+
-                        "<div id=\"headerResultText\">"+arr[i][1].toString()+"</div> </div>"+ "<div class=\"col\" id=\"dateResultText\">"+
-                        "<div>"+ arr[i][2].toString()+"</div> </div> <div id=\"bodyResultText\" class=\"col\">"+ "<div>"+
-                        arr[i][3].toString()+"</div> </div> </div> <div></br></br></div>";
-                        pass = true;
+                        /*create a DIV element for each matching element:*/
+                        if (indexes.length > 0) {
+                            count++;
+                            div_element += "<div class=\"col\"> " +
+                                "<div id=\"urlText\"><i><u>" + arr[i][0].toString() + "</u></i></div>" + "<div> <div class=\"col\">" +
+                                "<div id=\"headerResultText\">" + arr[i][1].toString() + "</div> </div>" + "<div class=\"col\" id=\"dateResultText\">" +
+                                "<div>" + arr[i][2].toString() + "</div> </div> <div id=\"bodyResultText\" class=\"col\">" + "<div>" +
+                                arr[i][3].toString() + "</div> </div> </div> <div></br></br></div>";
+                            pass = true;
 
+                        }
                     }
                 }
             })
         }
-        return div_element;
+        return [div_element, count];
     }
 }
 

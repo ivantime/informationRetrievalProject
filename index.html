@@ -29,14 +29,30 @@
             <script>
                 autocomplete(document.getElementById("searchBoxInput"), data);
                 jQuery('input.searchBtn').click(function (event) {
+                    const startTime = performance.now()
                     event.preventDefault();
                     document.getElementById('startHere').innerHTML = ""
 
                     var inputQuery = document.getElementById('searchBoxInput').value
 
-                    var stringHTML = findSearch(inputQuery, data)
-                    var newRow = jQuery(stringHTML);
-                    jQuery('div#startHere').append(newRow);
+                    if (inputQuery.replace(/ /g, '') === "") {
+                        var inputQuery = document.getElementById('numberSecondsResultText').innerHTML =
+                            "About " + 0 + " results (" + 0 +
+                            " seconds)";
+                    }
+                    else {
+                        var [stringHTML, count] = findSearch(inputQuery, data)
+                        var newRow = jQuery(stringHTML);
+                        jQuery('div#startHere').append(newRow);
+                        var endTime = performance.now()
+
+
+                        var result = count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").toString();
+                        if (result === "false") result = 0;
+                        var inputQuery = document.getElementById('numberSecondsResultText').innerHTML =
+                            "About " + result + " results (" + parseFloat((endTime - startTime) * 0.001).toFixed(7) +
+                            " seconds)";
+                    }
                 });
             </script>
         </form>
@@ -45,7 +61,7 @@
     <div class="container">
         <div class="row">
             <div id="numberSecondsResultText">
-                About 10,110,000,000 results (5000 seconds)
+                Search to get Results and the Time it takes
             </div>
         </div>
         <div class="row">

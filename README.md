@@ -4,6 +4,7 @@ Note:
 -Finished sample Web Layout (HTML/CSS/AutoComplete) on html webpage
 -Finished to Dynamically populate "Search" results on search button "click"
 -On Select search's autopopulate-list option to populate selection to search box
+-Return Number of Search Results and the Time it Took to get Them
 
 Currently working on:
 -None
